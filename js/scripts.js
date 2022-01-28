@@ -1,4 +1,9 @@
 // Business logic
+function PizzaOrder() {
+  this.pizzas = {};
+  this.currentId = 0;
+}
+
 function Pizza(toppings, size, notes) {
   this.toppings = toppings;
   this.size = size;
@@ -6,6 +11,8 @@ function Pizza(toppings, size, notes) {
 }
 
 // UI logic
+let pizzaOrder = new PizzaOrder();
+
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
     event.preventDefault();
