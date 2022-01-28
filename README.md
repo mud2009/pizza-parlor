@@ -52,6 +52,13 @@ This site is accessible [here](/).
   pizzaOrder.assignId();  
   Expected Output: pizzaOrder{currentId:1}  
 
+### Describe: PizzaOrder.prototype.findPizza()
+
+- Test: "It should find a pizza within the object by its ID."  
+  Code:  
+  pizzaOrder.findPizza(1);  
+  Expected Output: pizzaOrder.pizzaz{id:1}  
+
 ### Describe: Pizza()
 
 - Test: "It should return a Pizza object with two properties for toppings and size"  

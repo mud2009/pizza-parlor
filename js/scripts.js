@@ -21,7 +21,10 @@ PizzaOrder.prototype.assignId = function() {
 }
 
 // UI logic
-let pizzaOrder = new PizzaOrder();
+let myPizzaOrder = new PizzaOrder();
+
+function displayPizzaCart(orderToDisplay)
+let pizzaList = $("#pizza-cart-list")
 
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
@@ -34,6 +37,6 @@ $(document).ready(function(){
     let notesInput = $("#notes").val();
 
     let pizza1 = new Pizza(toppingsInput, sizeInput, notesInput);
-    pizzaOrder.addPizza(pizza1);
+    myPizzaOrder.addPizza(pizza1);
   })
 })
