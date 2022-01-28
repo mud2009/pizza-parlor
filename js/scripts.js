@@ -29,9 +29,10 @@ function Pizza(toppings, size, notes) {
   this.price = 0;
 }
 
-Pizza.prototype.getPizzaPrice = function(orderToDisplay,index) { 
-  Object.keys(orderToDisplay.pizzas[index]).forEach(function(key){
+Pizza.prototype.getPizzaPrice = function(orderToDisplay) { 
+  Object.keys(orderToDisplay.pizzas).forEach(function(key){
     const pizza = orderToDisplay.findPizza(key);
+    pizza.price = 0;
     if (pizza.toppings.length > 0) {
       pizza.price += (pizza.toppings.length * 1.50);
     }
