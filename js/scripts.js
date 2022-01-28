@@ -2,7 +2,6 @@
 function PizzaOrder() {
   this.pizzas = {};
   this.currentId = 0;
-  this.totalPrice = 0;
 }
 
 PizzaOrder.prototype.addPizza = function(pizza) {
@@ -23,9 +22,17 @@ PizzaOrder.prototype.findPizza = function(id) {
 }
 
 PizzaOrder.prototype.getTotalPrice = function() {
-  for (let i = 0; i < (Object.keys(this.pizzas).length) - 1; i ++)
+  for (let i = 0; i < ((Object.keys(this.pizzas)).length - 1); i ++) {
   this.totalPrice += this.pizzas[i].price;
+  }
 }
+
+PizzaOrder.prototype.getTotalPrice = function() {
+  Object.keys(this.pizzas).forEach(function(key){
+    const pizza = this.findPizza(key);
+    pizza.price = 0;
+  });
+};
 
 
 function Pizza(toppings, size, notes) {
@@ -33,6 +40,7 @@ function Pizza(toppings, size, notes) {
   this.size = size;
   this.notes = notes;
   this.price = 0;
+  this.totalPrice = 0;
 }
 
 Pizza.prototype.getPizzaPrice = function(orderToDisplay) { 
@@ -85,6 +93,10 @@ function displayPizzaCart(orderToDisplay){
   pizzaList.html(htmlForPizzaList)
 };
 
+function displayTotalPrice(orderToDisplay) {
+  $("#total-price").html("$" + orderToDisplay.totalPrice)
+}
+
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
     event.preventDefault();
@@ -100,8 +112,9 @@ $(document).ready(function(){
     myPizzaOrder.addPizza(pizza1);
 
     pizza1.getPizzaPrice(myPizzaOrder)
-    myPizzaOrder.getTotalPrice()
     displayPizzaCart(myPizzaOrder);
+    myPizzaOrder.getTotalPrice()
+    displayTotalPrice(myPizzaOrder);
     $(".pizza-output").show();
   })
 })
