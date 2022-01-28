@@ -2,12 +2,14 @@
 function PizzaOrder() {
   this.pizzas = {};
   this.currentId = 0;
+  this.totalPrice = 0;
 }
 
 function Pizza(toppings, size, notes) {
   this.toppings = toppings;
   this.size = size;
   this.notes = notes;
+  this.price = price;
 }
 
 PizzaOrder.prototype.addPizza = function(pizza) {
