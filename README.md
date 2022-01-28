@@ -38,6 +38,20 @@ This site is accessible [here](/).
   const pizzaOrder = new PizzaOrder();  
   Expected Output: pizzaOrder {}  
 
+### Describe: PizzaOrder.prototype.addPizza()
+
+- Test: "It should add new pizzas to the nested object pizzas."  
+  Code:  
+  pizzaOrder.addPizza(newPizza);  
+  Expected Output: pizzaOrder.pizza {newPizza}  
+
+### Describe: PizzaOrder.prototype.assignId()
+
+- Test: "It should assign an ID for objects within PizzaOrder."  
+  Code:  
+  pizzaOrder.assignId();  
+  Expected Output: pizzaOrder.pizzas{id:1}  
+
 ### Describe: Pizza()
 
 - Test: "It should return a Pizza object with two properties for toppings and size"  
