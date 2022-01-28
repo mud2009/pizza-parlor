@@ -39,7 +39,6 @@ This site is accessible [here](/).
   Expected Output: Pizza { toppings: ["anchovies", "pineapple"], size: "medium" }  
 
 
-
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
