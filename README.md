@@ -31,6 +31,13 @@ This site is accessible [here](/).
 
 ## Specifications:
 
+### Describe: PizzaOrder()
+
+- Test: "It should construct a PizzaOrder object."  
+  Code:  
+  const pizzaOrder = new PizzaOrder();  
+  Expected Output: pizzaOrder {}  
+
 ### Describe: Pizza()
 
 - Test: "It should return a Pizza object with two properties for toppings and size"  
