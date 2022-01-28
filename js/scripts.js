@@ -22,6 +22,12 @@ PizzaOrder.prototype.findPizza = function(id) {
   return false;
 }
 
+PizzaOrder.prototype.getTotalPrice = function() {
+  for (let i = 0; i < (Object.keys(this.pizzas).length) - 1; i ++)
+  this.totalPrice += this.pizzas[i].price;
+}
+
+
 function Pizza(toppings, size, notes) {
   this.toppings = toppings;
   this.size = size;
@@ -94,7 +100,7 @@ $(document).ready(function(){
     myPizzaOrder.addPizza(pizza1);
 
     pizza1.getPizzaPrice(myPizzaOrder)
-
+    myPizzaOrder.getTotalPrice()
     displayPizzaCart(myPizzaOrder);
     $(".pizza-output").show();
   })
