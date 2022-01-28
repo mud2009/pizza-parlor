@@ -1,8 +1,8 @@
 // Business logic
-function Pizza() {
-  this.toppings = [];
-  this.size = "";
-  this.notes = "";
+function Pizza(toppings, size, notes) {
+  this.toppings = toppings;
+  this.size = size;
+  this.notes = notes;
   this.currentId = 0;
 }
 
