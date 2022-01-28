@@ -10,6 +10,16 @@ function Pizza(toppings, size, notes) {
   this.notes = notes;
 }
 
+PizzaOrder.prototype.addPizza = function(pizza) {
+  pizza.id = this.assignId();
+  this.pizzas[pizza.id] = pizza;
+}
+
+PizzaOrder.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+}
+
 // UI logic
 let pizzaOrder = new PizzaOrder();
 
@@ -24,6 +34,6 @@ $(document).ready(function(){
     let notesInput = $("#notes").val();
 
     let pizza1 = new Pizza(toppingsInput, sizeInput, notesInput);
-
+    pizzaOrder.addPizza(pizza1);
   })
 })
