@@ -5,13 +5,6 @@ function PizzaOrder() {
   this.totalPrice = 0;
 }
 
-function Pizza(toppings, size, notes) {
-  this.toppings = toppings;
-  this.size = size;
-  this.notes = notes;
-  this.price = price;
-}
-
 PizzaOrder.prototype.addPizza = function(pizza) {
   pizza.id = this.assignId();
   this.pizzas[pizza.id] = pizza;
@@ -29,6 +22,30 @@ PizzaOrder.prototype.findPizza = function(id) {
   return false;
 }
 
+function Pizza(toppings, size, notes) {
+  this.toppings = toppings;
+  this.size = size;
+  this.notes = notes;
+  this.price = 0;
+}
+
+Pizza.prototype.getPizzaPrice = function(orderToDisplay,index) { 
+  Object.keys(orderToDisplay.pizzas[index]).forEach(function(key){
+    const pizza = orderToDisplay.findPizza(key);
+    if (pizza.toppings.length > 0) {
+      pizza.price += (pizza.toppings.length * 1.50);
+    }
+    if (pizza.size === "Extra Large") {
+      pizza.price += 20;
+    } else if (pizza.size === "Large") {
+      pizza.price += 16;
+    } else if (pizza.size === "Medium") {
+      pizza.price += 14;
+    } else {
+      pizza.price += 12;
+    };
+  });
+};
 
 // pizzaCost = (pizzas[id].toppings.length * 1.50)
 // pizzaCost = size small = 12, medium = 14, large = 16, extra large = 20 
@@ -70,11 +87,13 @@ $(document).ready(function(){
     });
     let sizeInput = $("#size").val();
     let notesInput = $("#notes").val();
-
+    
     let pizza1 = new Pizza(toppingsInput, sizeInput, notesInput);
+
     myPizzaOrder.addPizza(pizza1);
 
-    displayPizzaCart(myPizzaOrder)
+    displayPizzaCart(myPizzaOrder);
+    pizza1.getPizzaPrice(myPizzaOrder, (pizza1.length - 1))
     $(".pizza-output").show();
   })
 })

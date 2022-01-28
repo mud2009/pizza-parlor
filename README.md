@@ -66,6 +66,12 @@ This site is accessible [here](/).
   const myPizza = new Pizza(["anchovies", "pineapple"], "medium");  
   Expected Output: Pizza { toppings: ["anchovies", "pineapple"], size: "medium" }  
 
+### Describe: Pizza.prototype.getPizzaPrice()
+
+- Test: "It should return a price for a pizza based on the properties of that pizza"  
+  Code:  
+  const myPizza.getPizzaPrice();  
+  Expected Output: myPizza.price = 15  
 
 ## License
 
