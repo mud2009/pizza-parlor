@@ -59,6 +59,14 @@ This site is accessible [here](/).
   pizzaOrder.findPizza(1);  
   Expected Output: pizzaOrder.pizzaz{id:1}  
 
+### Describe: PizzaOrder.prototype.getTotalPrice()
+
+- Test: "It should return a price for the order, based on the individual prices of the pizzas in the cart"  
+  Code:  
+  const myPizzaOrder.getTotalPrice();  
+  Expected Output: myPizzaOrder.totalPrice = 30  
+
+
 ### Describe: Pizza()
 
 - Test: "It should return a Pizza object with two properties for toppings and size"  
