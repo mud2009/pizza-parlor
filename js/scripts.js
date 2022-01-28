@@ -63,16 +63,16 @@ function displayPizzaCart(orderToDisplay){
     if (pizza.toppings.length === 0) {
       htmlForPizzaList += "Plain, " + pizza.size
       if (pizza.notes != ""){
-        htmlForPizzaList += ", " + pizza.notes + "</li>";
+        htmlForPizzaList += ", " + pizza.notes + ", $" + pizza.price + "</li>";
       } else {
-        htmlForPizzaList += "</li>";
+        htmlForPizzaList += ", $" + pizza.price + "</li>";
       }
     } else {
       htmlForPizzaList += pizza.toppings + ", " + pizza.size;
       if (pizza.notes != ""){
-        htmlForPizzaList += ", " + pizza.notes; + "</li>";
+        htmlForPizzaList += ", " + pizza.notes + ", $" + pizza.price + "</li>";
       } else {
-      htmlForPizzaList += "</li>";
+      htmlForPizzaList += ", $" + pizza.price + "</li>";
       }
     };
   });
@@ -93,8 +93,9 @@ $(document).ready(function(){
 
     myPizzaOrder.addPizza(pizza1);
 
+    pizza1.getPizzaPrice(myPizzaOrder)
+
     displayPizzaCart(myPizzaOrder);
-    pizza1.getPizzaPrice(myPizzaOrder, (pizza1.length - 1))
     $(".pizza-output").show();
   })
 })
