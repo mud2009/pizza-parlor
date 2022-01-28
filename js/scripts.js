@@ -20,11 +20,23 @@ PizzaOrder.prototype.assignId = function() {
   return this.currentId;
 }
 
+PizzaOrder.prototype.findPizza = function(id) {
+  if (this.pizzas[id] != undefined) {
+    return this.pizzas[id];
+  }
+  return false;
+}
+
 // UI logic
 let myPizzaOrder = new PizzaOrder();
 
-function displayPizzaCart(orderToDisplay)
-let pizzaList = $("#pizza-cart-list")
+function displayPizzaCart(orderToDisplay){
+  let pizzaList = $("ul#pizza-cart-list");
+  let htmlForPizzaList = "";
+  Object.keys(orderToDisplay.pizzas).forEach(function(key){
+    const pizza = orderToDisplay.find
+  })
+}
 
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
