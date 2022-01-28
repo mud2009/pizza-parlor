@@ -55,9 +55,9 @@ function displayPizzaCart(orderToDisplay){
       htmlForPizzaList += "</li>";
       }
     };
-  })
+  });
   pizzaList.html(htmlForPizzaList)
-  }
+};
 
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
