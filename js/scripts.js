@@ -27,6 +27,10 @@ PizzaOrder.prototype.findPizza = function(id) {
   return false;
 }
 
+
+// pizzaCost = (pizzas[id].toppings.length * 1.50)
+// pizzaCost = size small = 12, medium = 14, large = 16, extra large = 20 
+
 // UI logic
 let myPizzaOrder = new PizzaOrder();
 
@@ -34,9 +38,26 @@ function displayPizzaCart(orderToDisplay){
   let pizzaList = $("ul#pizza-cart-list");
   let htmlForPizzaList = "";
   Object.keys(orderToDisplay.pizzas).forEach(function(key){
-    const pizza = orderToDisplay.find
+    const pizza = orderToDisplay.findPizza(key);
+    htmlForPizzaList += "<li id='" + pizza.id + "'>";
+    if (pizza.toppings.length === 0) {
+      htmlForPizzaList += "Plain, " + pizza.size
+      if (pizza.notes != ""){
+        htmlForPizzaList += ", " + pizza.notes + "</li>";
+      } else {
+        htmlForPizzaList += "</li>";
+      }
+    } else {
+      htmlForPizzaList += pizza.toppings + ", " + pizza.size;
+      if (pizza.notes != ""){
+        htmlForPizzaList += ", " + pizza.notes; + "</li>";
+      } else {
+      htmlForPizzaList += "</li>";
+      }
+    };
   })
-}
+  pizzaList.html(htmlForPizzaList)
+  }
 
 $(document).ready(function(){
   $("#pizza-form").submit(function(event){
@@ -50,5 +71,8 @@ $(document).ready(function(){
 
     let pizza1 = new Pizza(toppingsInput, sizeInput, notesInput);
     myPizzaOrder.addPizza(pizza1);
+
+    displayPizzaCart(myPizzaOrder)
+    $(".pizza-output").show();
   })
 })

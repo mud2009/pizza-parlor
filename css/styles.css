@@ -12,10 +12,6 @@ img {
   display: block;
 }
 
-#pizza-cart {
-  display: none;
-}
-
-#pizza-price {
+.pizza-output {
   display: none;
 }
