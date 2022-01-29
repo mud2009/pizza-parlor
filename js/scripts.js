@@ -1,7 +1,8 @@
 // Business logic
 function PizzaOrder() {
   this.pizzas = {};
-  this.currentId = 0;
+  this.currentId = 0
+  this.totalPrice = 0;
 }
 
 PizzaOrder.prototype.addPizza = function(pizza) {
@@ -21,26 +22,18 @@ PizzaOrder.prototype.findPizza = function(id) {
   return false;
 }
 
-PizzaOrder.prototype.getTotalPrice = function() {
-  for (let i = 0; i < ((Object.keys(this.pizzas)).length - 1); i ++) {
-  this.totalPrice += this.pizzas[i].price;
-  }
+PizzaOrder.prototype.getTotalPrice = function(orderToDisplay) {
+  Object.keys(orderToDisplay.pizzas).forEach(function(key) {
+    const pizza = orderToDisplay.findPizza(key);
+    orderToDisplay.totalPrice += pizza.price;
+  })
 }
-
-PizzaOrder.prototype.getTotalPrice = function() {
-  Object.keys(this.pizzas).forEach(function(key){
-    const pizza = this.findPizza(key);
-    pizza.price = 0;
-  });
-};
-
 
 function Pizza(toppings, size, notes) {
   this.toppings = toppings;
   this.size = size;
   this.notes = notes;
   this.price = 0;
-  this.totalPrice = 0;
 }
 
 Pizza.prototype.getPizzaPrice = function(orderToDisplay) { 
@@ -62,8 +55,6 @@ Pizza.prototype.getPizzaPrice = function(orderToDisplay) {
   });
 };
 
-// pizzaCost = (pizzas[id].toppings.length * 1.50)
-// pizzaCost = size small = 12, medium = 14, large = 16, extra large = 20 
 
 // UI logic
 let myPizzaOrder = new PizzaOrder();
@@ -97,7 +88,17 @@ function displayTotalPrice(orderToDisplay) {
   $("#total-price").html("$" + orderToDisplay.totalPrice)
 }
 
+function attachContactListeners() {
+  $("#place-order").on("click", function() {
+    myPizzaOrder.totalPrice = 0;
+    myPizzaOrder.getTotalPrice(myPizzaOrder)
+    displayTotalPrice(myPizzaOrder);
+    $("#pizza-price").show();
+  })
+}
+
 $(document).ready(function(){
+  attachContactListeners();
   $("#pizza-form").submit(function(event){
     event.preventDefault();
     let toppingsInput = [];
@@ -113,8 +114,7 @@ $(document).ready(function(){
 
     pizza1.getPizzaPrice(myPizzaOrder)
     displayPizzaCart(myPizzaOrder);
-    myPizzaOrder.getTotalPrice()
-    displayTotalPrice(myPizzaOrder);
-    $(".pizza-output").show();
+    
+    $("#pizza-cart").show();
   })
 })
