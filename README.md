@@ -28,7 +28,7 @@ This site is accessible [here](https://mud2009.github.io/pizza-parlor/).
 
 ## Known bugs
 
-* None so far.
+* Needs CSS formatting.
 
 ## Specifications:
 
