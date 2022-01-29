@@ -112,8 +112,6 @@ This site is accessible [here](https://mud2009.github.io/pizza-parlor/).
   Expected Output: myPizza.price = + 12
 
 
-
-
 ## License
 
 [MIT](https://opensource.org/licenses/MIT)
