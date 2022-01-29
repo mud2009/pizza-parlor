@@ -114,7 +114,7 @@ $(document).ready(function(){
 
     pizza1.getPizzaPrice(myPizzaOrder)
     displayPizzaCart(myPizzaOrder);
-    
+    $("#pizza-form")[0].reset();
     $("#pizza-cart").show();
   })
 })
